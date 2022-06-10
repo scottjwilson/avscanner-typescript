@@ -139,16 +139,18 @@ const MissingSlug: NextPage = ({ person }) => {
             </button>
           </div>
         </form>
-        <button
-          onClick={handleDelete}
-          className={
-            loading
-              ? "btn-error btn-outline btn btn-block loading"
-              : "btn-error btn-outline btn btn-block"
-          }
-        >
-          Delete
-        </button>
+        <div>
+          <button
+            onClick={handleDelete}
+            className={
+              loading
+                ? "btn-error btn-outline btn btn-block loading"
+                : "btn-error btn-outline btn btn-block"
+            }
+          >
+            Delete
+          </button>
+        </div>
       </div>
     </>
   );

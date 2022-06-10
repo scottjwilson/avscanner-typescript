@@ -1,8 +1,10 @@
 import Header from "./Header";
 import Footer from "./Footer";
 import { Toaster } from "react-hot-toast";
+import React from "react";
+import { Props } from "types";
 
-export default function Page({ children }) {
+const Page = ({ children }: Props) => {
   return (
     <>
       <Toaster
@@ -27,4 +29,6 @@ export default function Page({ children }) {
       </div>
     </>
   );
-}
+};
+
+export default Page;

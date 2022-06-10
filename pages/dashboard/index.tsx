@@ -1,9 +1,8 @@
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
 
-type Props = {};
-
-export default function Dashboard({}: Props) {
+const Dashboard: NextPage = () => {
   const router = useRouter();
   const handleLogout = async (e) => {
     e.preventDefault();
@@ -21,4 +20,6 @@ export default function Dashboard({}: Props) {
       <button onClick={handleLogout}>Sign Out</button>
     </div>
   );
-}
+};
+
+export default Dashboard;

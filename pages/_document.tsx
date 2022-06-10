@@ -17,7 +17,7 @@ class MyDocument extends Document {
 
   render(): ReactElement {
     return (
-      <Html lang="en">
+      <Html lang="en" data-theme="system">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
           <link

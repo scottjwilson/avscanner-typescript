@@ -4,11 +4,10 @@ import { useQuery } from "react-query";
 import { Post } from "types";
 
 // const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
-const Home: NextPage = () => {
+const Home: NextPage = ({ url }) => {
   async function fetchPosts() {
-    const res = await fetch(
-      `https://graph.facebook.com/v11.0/240300483115456/posts?fields=full_picture,created_time,updated_time,message,permalink_url&transport=cors&access_token=EAACldn3rRnUBAOZBWh5irw8bZAWsyEZClRd2Bbkvl5rL5WAVsegdt8j55qJgKd7xCPQdyDXVhQF38r62V8DjRemL1UOTnfVcZCPoG5C5pMkRZBSe7eo9gCu95FTNbIZBkG4IfOBgTtpyxYi3xWZAQe8FkriRt7lkNQgTiP0C4KpwlO1NGzn8Hnbtvh4DiC4brg8XyVzG0P2PgZDZD`
-    );
+    const res = await fetch(url);
+
     return res.json();
   }
 
@@ -45,5 +44,13 @@ const Home: NextPage = () => {
     </>
   );
 };
+
+export async function getServerSideProps() {
+  const url = process.env.FB_URL;
+
+  return {
+    props: { url },
+  };
+}
 
 export default Home;

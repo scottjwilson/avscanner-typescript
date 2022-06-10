@@ -8,6 +8,7 @@ import Page from "@/components/Page";
 import { ThemeProvider } from "next-themes";
 import Router from "next/router";
 import NProgress from "nprogress";
+import { useTheme } from "next-themes";
 
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -15,14 +16,13 @@ Router.events.on("routeChangeError", () => NProgress.done());
 
 function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient();
+
   return (
     <QueryClientProvider client={queryClient}>
       <UserProvider supabaseClient={supabaseClient}>
-        <ThemeProvider defaultTheme="system">
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </ThemeProvider>
+        <Page>
+          <Component {...pageProps} />
+        </Page>
       </UserProvider>
     </QueryClientProvider>
   );
