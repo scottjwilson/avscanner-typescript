@@ -11,7 +11,7 @@ const Page = ({ children }: Props) => {
         toastOptions={{
           duration: 3000,
           position: "top-center",
-          reverseOrder: "true",
+
           style: {
             paddingInline: "1rem",
             fontFamily: "karla, sans-serif",
