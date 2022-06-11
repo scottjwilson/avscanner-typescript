@@ -14,20 +14,18 @@ export interface Post {
 }
 
 export interface Person {
-  id: number;
+  id: string;
+  created_at: string;
   name: string;
-  status: Status;
   age: string;
+  lastSeen: string;
   description: string;
-  lastSeen: Location;
+  photoUrl: string;
+  status: string;
 }
 
 export enum Status {
   Missing = "Missng",
   Found = "Found",
   Unknown = "Unknown",
-}
-
-export interface Location {
-  name: string;
 }

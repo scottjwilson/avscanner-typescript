@@ -3,8 +3,7 @@ import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
 import { useQuery } from "react-query";
 import { Post } from "types";
 
-// const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
-const Home: NextPage = ({ url }) => {
+const Home: NextPage<{ posts: Post[] }> = ({ posts, url }) => {
   async function fetchPosts() {
     const res = await fetch(url);
 

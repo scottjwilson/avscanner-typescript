@@ -1,17 +1,7 @@
 import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
-
-interface Person {
-  id: string;
-  created_at: string;
-  name: string;
-  age: string;
-  lastSeen: string;
-  description: string;
-  photoUrl: string;
-  status: string;
-}
+import { Person } from "types";
 
 const PersonCard = ({
   person: {

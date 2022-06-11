@@ -1,5 +1,8 @@
 import { format } from "date-fns";
-export default function ArchivedPost({ post }) {
+import { Post } from "types";
+const ArchivedPost = ({
+  post: { createdTime, updatedTime, message, fullPicture, permalinkUrl },
+}: Post[]) => {
   //   const postedAt = moment(post.createdTime).fromNow();
 
   return (
@@ -7,29 +10,29 @@ export default function ArchivedPost({ post }) {
       <div className="card max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">
         <div>
           <div className="card-body">
-            {post.createdTime == post.updatedTime ? (
+            {createdTime == updatedTime ? (
               <h1 className="px-2 font-bold capitalize">
-                {format(new Date(post.createdTime), "eee h:mm a")}{" "}
+                {format(new Date(createdTime), "eee h:mm a")}{" "}
               </h1>
             ) : (
               <div className="rounded-md">
                 <h1 className="px-2 font-bold capitalize underline  rounded-md">
-                  updated // {format(new Date(post.updatedTime), "eee h:mm a")}
+                  updated // {format(new Date(updatedTime), "eee h:mm a")}
                 </h1>
                 <h1 className="px-2 font-bold capitalize">
-                  {format(new Date(post.createdTime), "eee h:mm a")}{" "}
+                  {format(new Date(createdTime), "eee h:mm a")}{" "}
                 </h1>
               </div>
             )}
-            <p>{post.message}</p>
+            <p>{message}</p>
           </div>
         </div>
         <figure>
-          {post.fullPicture && (
-            <img src={post.fullPicture} alt={post.permalink_url} />
-          )}
+          {fullPicture && <img src={fullPicture} alt={permalinkUrl} />}
         </figure>
       </div>
     </>
   );
-}
+};
+
+export default ArchivedPost;
