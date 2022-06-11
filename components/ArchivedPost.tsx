@@ -1,23 +1,23 @@
 import { format } from "date-fns";
-export default function PostItem({ post }) {
-  //   const postedAt = moment(post.created_time).fromNow();
+export default function ArchivedPost({ post }) {
+  //   const postedAt = moment(post.createdTime).fromNow();
 
   return (
     <>
       <div className="card max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">
         <div>
           <div className="card-body">
-            {post.created_time == post.updated_time ? (
+            {post.createdTime == post.updatedTime ? (
               <h1 className="px-2 font-bold capitalize">
-                {format(new Date(post.created_time), "eee h:mm a")}{" "}
+                {format(new Date(post.createdTime), "eee h:mm a")}{" "}
               </h1>
             ) : (
               <div className="rounded-md">
                 <h1 className="px-2 font-bold capitalize underline  rounded-md">
-                  updated // {format(new Date(post.updated_time), "eee h:mm a")}
+                  updated // {format(new Date(post.updatedTime), "eee h:mm a")}
                 </h1>
                 <h1 className="px-2 font-bold capitalize">
-                  {format(new Date(post.created_time), "eee h:mm a")}{" "}
+                  {format(new Date(post.createdTime), "eee h:mm a")}{" "}
                 </h1>
               </div>
             )}
@@ -25,8 +25,8 @@ export default function PostItem({ post }) {
           </div>
         </div>
         <figure>
-          {post.full_picture && (
-            <img src={post.full_picture} alt={post.permalink_url} />
+          {post.fullPicture && (
+            <img src={post.fullPicture} alt={post.permalink_url} />
           )}
         </figure>
       </div>

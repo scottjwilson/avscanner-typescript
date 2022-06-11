@@ -69,7 +69,10 @@ export default function PhotoUpload({ url, size, onUpload }) {
         />
       )}
       <div style={{ width: size }}>
-        <label className="button primary block" htmlFor="single">
+        <label
+          className="border flex justify-center items-center py-2   rounded-md hover:bg-base-100 transition ease-in-out cursor-pointer"
+          htmlFor="single"
+        >
           {uploading ? "Uploading ..." : "Upload"}
         </label>
         <input
@@ -77,6 +80,7 @@ export default function PhotoUpload({ url, size, onUpload }) {
             visibility: "hidden",
             position: "absolute",
           }}
+          className="btn"
           type="file"
           id="single"
           accept="image/*"

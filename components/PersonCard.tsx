@@ -2,9 +2,29 @@ import { format } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function PersonCard({
-  person: { id, created_at, name, age, last_seen, description, photo_url },
-}) {
+interface Person {
+  id: string;
+  created_at: string;
+  name: string;
+  age: string;
+  lastSeen: string;
+  description: string;
+  photoUrl: string;
+  status: string;
+}
+
+const PersonCard = ({
+  person: {
+    id,
+    name,
+    created_at,
+    age,
+    description,
+    lastSeen,
+    photoUrl,
+    status,
+  },
+}: Person[]) => {
   const sburl =
     "https://vudbxrkcwwrwjoetsfzm.supabase.co/storage/v1/object/public/images/";
 
@@ -28,14 +48,15 @@ export default function PersonCard({
         <p>
           <span className={spanClass}>Last Seen:</span>
 
-          {last_seen}
+          {lastSeen}
+          {status}
         </p>
-        {photo_url && (
+        {photoUrl && (
           <div className="relative h-[14rem]">
             <Image
               layout="fill"
               objectFit="contain"
-              src={`${sburl}/${photo_url}`}
+              src={`${sburl}/${photoUrl}`}
             />
           </div>
         )}
@@ -47,4 +68,6 @@ export default function PersonCard({
       </div>
     </div>
   );
-}
+};
+
+export default PersonCard;

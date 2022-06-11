@@ -17,6 +17,8 @@ const AddPerson: NextPage = () => {
     lastSeen: "",
   });
 
+  const [name, setName] = useState("");
+
   async function onSubmit(e) {
     e.preventDefault();
     try {
@@ -26,8 +28,8 @@ const AddPerson: NextPage = () => {
           name: inputs.name,
           age: inputs.age,
           description: inputs.description,
-          last_seen: inputs.lastSeen,
-          photo_url: photoUrl,
+          lastSeen: inputs.lastSeen,
+          // photoUrl: photoUrl,
         },
       ]);
       if (data) {
@@ -37,6 +39,7 @@ const AddPerson: NextPage = () => {
       }
     } catch (error) {
       alert(error);
+      console.log(error);
     }
   }
 
@@ -45,6 +48,7 @@ const AddPerson: NextPage = () => {
   return (
     <div className="max-w-md mx-auto bg-base-300 p-4 rounded-md">
       <h1 className="text-center text-xl">Add new missing person</h1>
+
       <form className="form-control" onSubmit={onSubmit}>
         <label htmlFor="name" className="label">
           <span className="label-text">Name</span>

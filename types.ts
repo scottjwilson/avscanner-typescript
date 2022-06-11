@@ -13,7 +13,7 @@ export interface Post {
   fullPicture: string;
 }
 
-export interface MissingPerson {
+export interface Person {
   id: number;
   name: string;
   status: Status;

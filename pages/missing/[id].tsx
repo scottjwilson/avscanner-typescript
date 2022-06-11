@@ -11,7 +11,8 @@ import toast from "react-hot-toast";
 
 const MissingSlug: NextPage = ({ person }) => {
   const [loading, setLoading] = useState(false);
-  const [photoUrl, setPhotoUrl] = useState("");
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [photoUrl, setPhotoUrl] = useState(person.photoUrl);
 
   const router = useRouter();
 
@@ -19,7 +20,7 @@ const MissingSlug: NextPage = ({ person }) => {
     name: person.name,
     age: person.age,
     description: person.description,
-    lastSeen: person.last_seen,
+    lastSeen: person.lastSeen,
   });
 
   async function onSubmit(e) {
@@ -33,8 +34,8 @@ const MissingSlug: NextPage = ({ person }) => {
             name: inputs.name,
             age: inputs.age,
             description: inputs.description,
-            last_seen: inputs.lastSeen,
-            photo_url: photoUrl,
+            lastSeen: inputs.lastSeen,
+            photoUrl: photoUrl,
           },
         ])
         .eq("id", person.id);
@@ -51,7 +52,7 @@ const MissingSlug: NextPage = ({ person }) => {
   async function handleDelete(e) {
     e.preventDefault();
     try {
-      setLoading(true);
+      setDeleteLoading(true);
       const { data } = await supabaseClient
         .from("missing_persons")
         .delete()
@@ -143,7 +144,7 @@ const MissingSlug: NextPage = ({ person }) => {
           <button
             onClick={handleDelete}
             className={
-              loading
+              deleteLoading
                 ? "btn-error btn-outline btn btn-block loading"
                 : "btn-error btn-outline btn btn-block"
             }
