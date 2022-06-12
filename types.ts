@@ -8,7 +8,15 @@ export interface Post {
   createdTime: string;
   updatedTime: string;
   message: string;
-  permalinkURL: string;
+  permalinkUrl: string;
+  id: string;
+  fullPicture: string;
+}
+export interface PostProps {
+  createdTime: string;
+  updatedTime: string;
+  message: string;
+  permalinkUrl: string;
   id: string;
   fullPicture: string;
 }
