@@ -1,3 +1,6 @@
+import { format } from "date-fns";
+import Image from "next/image";
+import Link from "next/link";
 import { Person } from "types";
 
 const PersonCard = ({ person }: Person) => {
@@ -6,43 +9,42 @@ const PersonCard = ({ person }: Person) => {
 
   const spanClass = `font-black`;
   return (
-    <div className="card outline w-96 ">
-      {JSON.stringify(person)}
-      {/* <div className="card-body">
-        <p>{format(new Date(props.created_at), "MM/dd/yy  eee h:mm a")} </p>
+    <div className="card outline w-96 mb-8">
+      <div className="card-body">
+        <p>{format(new Date(person.created_at), "MM/dd/yy  eee h:mm a")} </p>
         <h1 className="card-title">
           {" "}
-          <span className={spanClass}>Name:</span> {props.name}
+          <span className={spanClass}>Name:</span> {person.name}
         </h1>
         <p>
           {" "}
-          <span className={spanClass}>Age:</span> {props.age}
+          <span className={spanClass}>Age:</span> {person.age}
         </p>
         <p>
           <span className={spanClass}>Description:</span>
-          {props.description}
+          {person.description}
         </p>
         <p>
           <span className={spanClass}>Last Seen:</span>
 
-          {props.lastSeen}
-          {props.status}
+          {person.lastSeen}
+          {person.status}
         </p>
-        {props.photoUrl && (
+        {person.photoUrl && (
           <div className="relative h-[14rem]">
             <Image
               layout="fill"
               objectFit="contain"
-              src={`${sburl}/${props.photoUrl}`}
+              src={`${sburl}/${person.photoUrl}`}
             />
           </div>
         )}
         <div className="card-actions justify-end">
-          <Link href={`/missing/${props.id}`}>
+          <Link href={`/missing/${person.id}`}>
             <a className="btn btn-primary">More Info</a>
           </Link>
         </div>
-      </div> */}
+      </div>
     </div>
   );
 };
