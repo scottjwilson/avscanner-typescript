@@ -1,8 +1,8 @@
 import { format } from "date-fns";
-import { PostItem } from "types";
+import { FbPost } from "types";
 const PostItem = ({
   post: { created_time, updated_time, message, full_picture, permalink_url },
-}: PostItem) => {
+}: FbPost) => {
   //   const postedAt = moment(post.created_time).fromNow();
 
   return (
