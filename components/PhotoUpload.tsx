@@ -1,15 +1,20 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 
-export default function PhotoUpload({ url, size, onUpload }) {
-  const [photoUrl, setPhotoUrl] = useState(null);
+interface Photo {
+  url: string;
+  size: string;
+  onUpload: Function;
+}
+export default function PhotoUpload({ url, size, onUpload }: Photo) {
+  const [photoUrl, setPhotoUrl] = useState<any | null>(null);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {
     if (url) downloadImage(url);
   }, [url]);
 
-  async function downloadImage(path) {
+  async function downloadImage(path: string) {
     try {
       const { data, error } = await supabaseClient.storage
         .from("images")
@@ -17,22 +22,24 @@ export default function PhotoUpload({ url, size, onUpload }) {
       if (error) {
         throw error;
       }
-      const url = URL.createObjectURL(data);
-      setPhotoUrl(url);
+      if (data) {
+        const url = URL.createObjectURL(data);
+        setPhotoUrl(url);
+      }
     } catch (error) {
       console.log("Error downloading image: ", error.message);
     }
   }
 
-  async function uploadPhoto(event) {
+  const uploadPhoto = async (e: ChangeEvent<HTMLInputElement>) => {
     try {
       setUploading(true);
 
-      if (!event.target.files || event.target.files.length === 0) {
+      if (!e.target.files || e.target.files.length === 0) {
         throw new Error("You must select an image to upload.");
       }
 
-      const file = event.target.files[0];
+      const file = e.target.files[0];
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
@@ -51,7 +58,7 @@ export default function PhotoUpload({ url, size, onUpload }) {
     } finally {
       setUploading(false);
     }
-  }
+  };
 
   return (
     <div>

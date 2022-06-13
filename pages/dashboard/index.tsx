@@ -1,10 +1,11 @@
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import { ChangeEvent, MouseEvent } from "react";
 
 const Dashboard: NextPage = () => {
   const router = useRouter();
-  const handleLogout = async (e) => {
+  const handleLogout = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
     const { error } = await supabaseClient.auth.signOut();

@@ -1,7 +1,8 @@
 import CodeNav from "@/components/CodeNav";
 import type { NextPage } from "next";
+import { Codes } from "types";
 
-const StandardIndex: NextPage = ({ standards }) => {
+const StandardIndex: NextPage<{ standards: Codes[] }> = ({ standards }) => {
   return (
     <div>
       <CodeNav />

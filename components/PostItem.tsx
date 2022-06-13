@@ -1,5 +1,8 @@
 import { format } from "date-fns";
-export default function PostItem({ post }) {
+import { PostItem } from "types";
+const PostItem = ({
+  post: { created_time, updated_time, message, full_picture, permalink_url },
+}: PostItem) => {
   //   const postedAt = moment(post.created_time).fromNow();
 
   return (
@@ -7,29 +10,29 @@ export default function PostItem({ post }) {
       <div className="card max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">
         <div>
           <div className="card-body">
-            {post.created_time == post.updated_time ? (
+            {created_time == updated_time ? (
               <h1 className="px-2 font-bold capitalize">
-                {format(new Date(post.created_time), "eee h:mm a")}{" "}
+                {format(new Date(created_time), "eee h:mm a")}{" "}
               </h1>
             ) : (
               <div className="rounded-md">
                 <h1 className="px-2 font-bold capitalize underline  rounded-md">
-                  updated // {format(new Date(post.updated_time), "eee h:mm a")}
+                  updated // {format(new Date(updated_time), "eee h:mm a")}
                 </h1>
                 <h1 className="px-2 font-bold capitalize">
-                  {format(new Date(post.created_time), "eee h:mm a")}{" "}
+                  {format(new Date(created_time), "eee h:mm a")}{" "}
                 </h1>
               </div>
             )}
-            <p>{post.message}</p>
+            <p>{message}</p>
           </div>
         </div>
         <figure>
-          {post.full_picture && (
-            <img src={post.full_picture} alt={post.permalink_url} />
-          )}
+          {full_picture && <img src={full_picture} alt={permalink_url} />}
         </figure>
       </div>
     </>
   );
-}
+};
+
+export default PostItem;

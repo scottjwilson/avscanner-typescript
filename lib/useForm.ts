@@ -1,23 +1,23 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 
 export default function useForm(initial = {}) {
   // create a state object for our inputs
   const [inputs, setInputs] = useState(initial);
 
-  function handleChange(e) {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let { value, name, type } = e.target;
-    if (type === "number") {
-      value = parseInt(value);
-    }
-    if (type === "file") {
-      [value] = e.target.files;
-    }
+    // if (type === "number") {
+    //   value = parseInt(value);
+    // }
+    // if (type === "file") {
+    //   [value] = e.target.files;
+    // }
     setInputs({
       // copy the existing state
       ...inputs,
       [name]: value,
     });
-  }
+  };
 
   function resetForm() {
     setInputs(initial);

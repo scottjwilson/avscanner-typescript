@@ -1,6 +1,8 @@
 import CodeNav from "@/components/CodeNav";
+import { NextPage } from "next";
+import { Codes } from "types";
 
-const TensIndex: NextPage = ({ tens }) => {
+const TensIndex: NextPage<{ tens: Codes[] }> = ({ tens }) => {
   return (
     <div>
       {" "}

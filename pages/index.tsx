@@ -1,17 +1,17 @@
 import PostItem from "@/components/PostItem";
-import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useQuery } from "react-query";
-import { Post } from "types";
+import { FbPost } from "types";
 
-const Home: NextPage<{ posts: Post[] }> = ({ posts, url }) => {
+const Home: NextPage<{ posts: FbPost[] }> = () => {
   async function fetchPosts() {
-    const res = await fetch(url);
+    const res = await fetch("/api/posts");
 
     return res.json();
   }
 
   function Posts() {
-    const { data: posts, status } = useQuery("posts", fetchPosts, {
+    const { data, status } = useQuery("posts", fetchPosts, {
       staleTime: 0,
       // cacheTime: 10,
     });
@@ -28,8 +28,8 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts, url }) => {
         <>
           {" "}
           <div className="flex flex-col items-center px-4">
-            {posts.data.map((post, i) => (
-              <PostItem key={i} post={post} />
+            {data.data.map((post) => (
+              <PostItem key={post.id} post={post} />
             ))}
           </div>
         </>
@@ -43,13 +43,5 @@ const Home: NextPage<{ posts: Post[] }> = ({ posts, url }) => {
     </>
   );
 };
-
-export async function getServerSideProps() {
-  const url = process.env.FB_URL;
-
-  return {
-    props: { url },
-  };
-}
 
 export default Home;

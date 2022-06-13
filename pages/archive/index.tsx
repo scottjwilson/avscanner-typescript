@@ -1,9 +1,8 @@
 import ArchivedPost from "@/components/ArchivedPost";
-import PostItem from "@/components/PostItem";
+
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
-import type { GetServerSideProps, GetStaticProps, NextPage } from "next";
+import type { NextPage } from "next";
 import { useQuery } from "react-query";
-import { Post } from "types";
 
 // const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
 const Home: NextPage = () => {
@@ -29,13 +28,12 @@ const Home: NextPage = () => {
     if (status === "success") {
       return (
         <>
-          {posts && (
-            <div className="flex flex-col items-center px-4">
-              {posts.data.map((post, i) => (
-                <ArchivedPost key={i} post={post} />
-              ))}
-            </div>
-          )}
+          {" "}
+          <div className="flex flex-col items-center px-4">
+            {posts.data.map((post) => (
+              <ArchivedPost key={post.id} post={post} />
+            ))}
+          </div>
         </>
       );
     }
