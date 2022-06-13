@@ -1,6 +1,7 @@
 import CodeNav from "@/components/CodeNav";
 import type { NextPage } from "next";
 import { Codes } from "types";
+
 const CodesIndex: NextPage<{ radios: Codes[] }> = ({ radios }) => {
   return (
     <div>

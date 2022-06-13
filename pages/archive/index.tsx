@@ -1,5 +1,4 @@
 import ArchivedPost from "@/components/ArchivedPost";
-
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
 import { useQuery } from "react-query";
