@@ -1,16 +1,16 @@
 import PostItem from "@/components/PostItem";
 import type { NextPage } from "next";
 import { useQuery } from "react-query";
-import { FbPost } from "types";
+import { Post } from "types";
 
-const Home: NextPage<{ posts: FbPost[] }> = () => {
+const Home: NextPage = () => {
   async function fetchPosts() {
     const res = await fetch("/api/posts");
 
     return res.json();
   }
 
-  function Posts() {
+  function Posts(): JSX.Element {
     const { data, status } = useQuery("posts", fetchPosts, {
       staleTime: 0,
       // cacheTime: 10,
@@ -28,7 +28,7 @@ const Home: NextPage<{ posts: FbPost[] }> = () => {
         <>
           {" "}
           <div className="flex flex-col items-center px-4">
-            {data.data.map((post) => (
+            {data.data.map((post: Post) => (
               <PostItem key={post.id} post={post} />
             ))}
           </div>

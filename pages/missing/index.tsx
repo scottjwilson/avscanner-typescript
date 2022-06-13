@@ -3,29 +3,54 @@ import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 const MissingIndex: NextPage = () => {
   const [persons, setPersons] = useState("");
   async function fetchPersons() {
-    const { data } = await supabaseClient.from("missing_persons").select("*");
-    setPersons(data);
+    const res = await supabaseClient.from("missing_persons").select("*");
+    return res;
   }
-  useEffect(() => {
-    fetchPersons();
-  }, []);
+
+  function Persons() {
+    const { data: persons, status } = useQuery("posts", fetchPersons, {
+      staleTime: 0,
+      // cacheTime: 10,
+    });
+    if (status === "loading") {
+      return <p>Loading...</p>;
+    }
+    if (status === "error") {
+      return <p>Error...</p>;
+    }
+    if (status === "success") {
+      return (
+        <>
+          {" "}
+          <div className="flex flex-col items-center w-full ">
+            {persons.data.map((person, i) => {
+              return (
+                <PersonCard
+                  key={i}
+                  person={person}
+                  photoUrl={undefined}
+                  id={""}
+                />
+              );
+            })}
+          </div>
+        </>
+      );
+    }
+  }
+
   return (
     <div className="max-w-4xl mx-auto">
       <Link href="/missing/add">
         <a className="btn btn-outline">add new</a>
       </Link>
 
-      {persons && (
-        <div className="flex flex-col items-center w-full ">
-          {persons.map((person, i) => {
-            return <PersonCard key={i} person={person} />;
-          })}
-        </div>
-      )}
+      <Persons />
     </div>
   );
 };

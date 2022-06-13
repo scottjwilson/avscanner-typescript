@@ -6,24 +6,36 @@ import {
 } from "@supabase/supabase-auth-helpers/nextjs";
 import { GetServerSideProps, NextPage } from "next";
 import { Router, useRouter } from "next/router";
-import { useState } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  MouseEventHandler,
+  SetStateAction,
+  useState,
+} from "react";
 import toast from "react-hot-toast";
+import { Person } from "types";
 
-const MissingSlug: NextPage = ({ person }) => {
+const MissingSlug: NextPage<{ person: Person }> = ({ person }) => {
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState(person.photoUrl);
 
   const router = useRouter();
 
-  const { inputs, handleChange } = useForm({
-    name: person.name,
-    age: person.age,
-    description: person.description,
-    lastSeen: person.lastSeen,
-  });
+  // const { inputs, handleChange } = useForm({
+  //   name: person.name,
+  //   age: person.age,
+  //   description: person.description,
+  //   lastSeen: person.lastSeen,
+  // });
 
-  async function onSubmit(e) {
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [description, setDescription] = useState("");
+  const [lastSeen, setLastSeen] = useState("");
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       setLoading(true);
@@ -31,10 +43,10 @@ const MissingSlug: NextPage = ({ person }) => {
         .from("missing_persons")
         .update([
           {
-            name: inputs.name,
-            age: inputs.age,
-            description: inputs.description,
-            lastSeen: inputs.lastSeen,
+            name: name,
+            age: age,
+            description: description,
+            lastSeen: lastSeen,
             photoUrl: photoUrl,
           },
         ])
@@ -49,8 +61,7 @@ const MissingSlug: NextPage = ({ person }) => {
     }
   }
 
-  async function handleDelete(e) {
-    e.preventDefault();
+  async function handleDelete() {
     try {
       setDeleteLoading(true);
       const { data } = await supabaseClient
@@ -81,8 +92,8 @@ const MissingSlug: NextPage = ({ person }) => {
             type="text"
             placeholder="Their Name"
             name="name"
-            value={inputs.name}
-            onChange={handleChange}
+            value={name}
+            onChange={(e) => setName(e.target.value)}
           />
           <label htmlFor="age" className="label">
             <span className="label-text">Age</span>
@@ -92,8 +103,8 @@ const MissingSlug: NextPage = ({ person }) => {
             type="text"
             placeholder="Age"
             name="age"
-            value={inputs.age}
-            onChange={handleChange}
+            value={age}
+            onChange={(e) => setAge(e.target.value)}
           />
           <label htmlFor="description" className="label">
             <span className="label-text">Description</span>
@@ -103,8 +114,8 @@ const MissingSlug: NextPage = ({ person }) => {
             type="text"
             placeholder="Description"
             name="description"
-            value={inputs.description}
-            onChange={handleChange}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
           <label htmlFor="last seen" className="label">
             <span className="label-text">Last Seen</span>
@@ -114,14 +125,14 @@ const MissingSlug: NextPage = ({ person }) => {
             type="text"
             placeholder="Last Seen"
             name="lastSeen"
-            value={inputs.lastSeen}
-            onChange={handleChange}
+            value={lastSeen}
+            onChange={(e) => setLastSeen(e.target.value)}
           />
 
           <PhotoUpload
             url={photoUrl}
             size={150}
-            onUpload={(url) => {
+            onUpload={(url: SetStateAction<string>) => {
               setPhotoUrl(url);
               // updateProfile({ username, website, avatar_url: url });
             }}
@@ -170,7 +181,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     console.log(error.message);
   }
 
-  return { props: { person } };
+  return {
+    props: {
+      person: person,
+    },
+  };
 };
 
 export default MissingSlug;

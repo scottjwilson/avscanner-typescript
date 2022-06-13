@@ -3,33 +3,36 @@ import useForm from "@/lib/useForm";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { FormEvent, SetStateAction, useState } from "react";
 import toast from "react-hot-toast";
 
 const AddPerson: NextPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState("");
-  const { inputs, handleChange } = useForm({
-    name: "",
-    age: "",
-    description: "",
-    lastSeen: "",
-  });
+  // const { inputs, handleChange } = useForm({
+  //   name: "",
+  //   age: "",
+  //   description: "",
+  //   lastSeen: "",
+  // });
 
   const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [description, setDescription] = useState("");
+  const [lastSeen, setLastSeen] = useState("");
 
-  async function onSubmit(e) {
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     try {
       setIsLoading(true);
       const { data } = await supabaseClient.from("missing_persons").insert([
         {
-          name: inputs.name,
-          age: inputs.age,
-          description: inputs.description,
-          lastSeen: inputs.lastSeen,
-          // photoUrl: photoUrl,
+          name: name,
+          age: age,
+          description: description,
+          lastSeen: lastSeen,
+          photoUrl: photoUrl,
         },
       ]);
       if (data) {
@@ -58,8 +61,8 @@ const AddPerson: NextPage = () => {
           type="text"
           placeholder="Their Name"
           name="name"
-          value={inputs.name}
-          onChange={handleChange}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
         />
         <label htmlFor="age" className="label">
           <span className="label-text">Age</span>
@@ -69,8 +72,8 @@ const AddPerson: NextPage = () => {
           type="text"
           placeholder="Age"
           name="age"
-          value={inputs.age}
-          onChange={handleChange}
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
         />
         <label htmlFor="description" className="label">
           <span className="label-text">Description</span>
@@ -80,8 +83,8 @@ const AddPerson: NextPage = () => {
           type="text"
           placeholder="Description"
           name="description"
-          value={inputs.description}
-          onChange={handleChange}
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <label htmlFor="last seen" className="label">
           <span className="label-text">Last Seen</span>
@@ -91,13 +94,13 @@ const AddPerson: NextPage = () => {
           type="text"
           placeholder="Last Seen"
           name="lastSeen"
-          value={inputs.lastSeen}
-          onChange={handleChange}
+          value={lastSeen}
+          onChange={(e) => setLastSeen(e.target.value)}
         />
         <PhotoUpload
           url={photoUrl}
           size={150}
-          onUpload={(url) => {
+          onUpload={(url: SetStateAction<string>) => {
             setPhotoUrl(url);
             // updateProfile({ username, website, avatar_url: url });
           }}

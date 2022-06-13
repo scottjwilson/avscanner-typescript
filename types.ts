@@ -5,21 +5,20 @@ export interface Props {
 }
 
 export interface Post {
-  createdTime: string;
-  updatedTime: string;
-  message: string;
-  permalinkUrl: string;
   id: string;
-  fullPicture: string;
-  url: string;
+  created_time: string;
+  updated_time: string;
+  message: string;
+  permalink_url: string;
+  full_picture: string;
 }
 export interface FbPost {
   post: {
+    id: string;
     created_time: string;
     updated_time: string;
     message: string;
     permalink_url: string;
-    id: string;
     full_picture: string;
   };
 }
@@ -35,6 +34,8 @@ export interface ArchivedPost {
 }
 
 export interface Person {
+  photoUrl: any;
+  id: string;
   person: {
     id: string;
     created_at: string;

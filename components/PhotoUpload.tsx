@@ -3,7 +3,7 @@ import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 
 interface Photo {
   url: string;
-  size: string;
+  size: number;
   onUpload: Function;
 }
 export default function PhotoUpload({ url, size, onUpload }: Photo) {

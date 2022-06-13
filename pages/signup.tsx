@@ -1,7 +1,7 @@
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import { AiOutlineMail } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Link from "next/link";
@@ -13,21 +13,25 @@ export default function SignInPage() {
   const { user } = useUser();
 
   const [loading, setLoading] = useState(false);
-  const { inputs, handleChange } = useForm({
-    full_name: "",
-    email: "",
-    password: "",
-  });
+  // const { inputs, handleChange } = useForm({
+  //   full_name: "",
+  //   email: "",
+  //   password: "",
+  // });
 
-  const onSubmit = async (e) => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     const { error } = await supabaseClient.auth.signUp(
       {
-        email: inputs.email,
-        password: inputs.password,
+        email: email,
+        password: password,
       },
-      { data: { full_name: inputs.full_name } }
+      { data: { full_name: name } }
     );
     if (error) {
       alert(JSON.stringify(error));
@@ -76,9 +80,9 @@ export default function SignInPage() {
               className="input input-primary"
               type="text"
               placeholder="Name"
-              name="full_name"
-              value={inputs.full_name}
-              onChange={handleChange}
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
             />
             <label htmlFor="email" className="label">
               <span className="label-text">Email</span>
@@ -89,8 +93,8 @@ export default function SignInPage() {
               placeholder="Your email"
               autoComplete="email"
               name="email"
-              value={inputs.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
 
             <label htmlFor="password" className="label">
@@ -102,8 +106,8 @@ export default function SignInPage() {
               placeholder="Password"
               autoComplete="new-password"
               name="password"
-              value={inputs.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
             {/* <input className="syrrup" type="syrrup" name="syrrup" /> */}
             <div className="mt-6">

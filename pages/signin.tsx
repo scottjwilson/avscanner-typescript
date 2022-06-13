@@ -1,7 +1,7 @@
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import { AiOutlineMail } from "react-icons/ai";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 
 import Link from "next/link";
@@ -16,7 +16,7 @@ export default function SignInPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     const { error } = await supabaseClient.auth.signIn({
@@ -87,17 +87,7 @@ export default function SignInPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {/* 
-          <label htmlFor="phone" className="label">
-            <span className="label-text">Phone</span>
-          </label>
-          <input
-            className="input input-primary"
-            type="phone"
-            placeholder="Your phone number"
-            autoComplete="phone"
-            name="phone"
-          /> */}
+
             <label htmlFor="password" className="label">
               <span className="label-text">Password</span>
             </label>
