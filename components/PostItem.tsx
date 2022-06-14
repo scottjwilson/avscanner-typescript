@@ -1,13 +1,13 @@
 import { format } from "date-fns";
 import { FbPost } from "types";
-const PostItem = ({
+export default function PostItem({
   post: { created_time, updated_time, message, full_picture, permalink_url },
-}: FbPost) => {
+}: FbPost) {
   //   const postedAt = moment(post.created_time).fromNow();
 
   return (
     <>
-      <div className="card max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">
+      <div className="card w-full max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">
         <div>
           <div className="card-body">
             {created_time == updated_time ? (
@@ -33,6 +33,4 @@ const PostItem = ({
       </div>
     </>
   );
-};
-
-export default PostItem;
+}

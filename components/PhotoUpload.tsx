@@ -7,7 +7,7 @@ interface Photo {
   onUpload: Function;
 }
 export default function PhotoUpload({ url, size, onUpload }: Photo) {
-  const [photoUrl, setPhotoUrl] = useState<any | null>(null);
+  const [photoUrl, setPhotoUrl] = useState<string | null>(null);
   const [uploading, setUploading] = useState(false);
 
   useEffect(() => {

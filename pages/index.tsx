@@ -27,7 +27,7 @@ const Home: NextPage = () => {
       return (
         <>
           {" "}
-          <div className="flex flex-col items-center px-4">
+          <div className="flex flex-col items-center">
             {data.data.map((post: Post) => (
               <PostItem key={post.id} post={post} />
             ))}
@@ -38,9 +38,9 @@ const Home: NextPage = () => {
   }
 
   return (
-    <>
+    <div className="max-w-xl mx-auto">
       <Posts />
-    </>
+    </div>
   );
 };
 

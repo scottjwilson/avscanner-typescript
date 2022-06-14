@@ -9,33 +9,39 @@ const PersonCard = ({ person }: Person) => {
 
   const spanClass = `font-black`;
   return (
-    <div className="card outline w-96 mb-8">
+    <div className="card w-full bg-base-100 shadow-xl mb-8 outline rounded-md">
       <div className="card-body">
         <p>{format(new Date(person.created_at), "MM/dd/yy  eee h:mm a")} </p>
         <h1 className="card-title">
           {" "}
-          <span className={spanClass}>Name:</span> {person.name}
+          <span className={spanClass}>Name: </span>
+          {person.name}
         </h1>
         <p>
           {" "}
-          <span className={spanClass}>Age:</span> {person.age}
+          <span className={spanClass}>Age: </span>
+          {person.age}
         </p>
         <p>
-          <span className={spanClass}>Description:</span>
+          <span className={spanClass}>Description: </span>
           {person.description}
         </p>
         <p>
-          <span className={spanClass}>Last Seen:</span>
-
+          <span className={spanClass}>Last Seen: </span>
           {person.lastSeen}
+        </p>
+        <p>
+          <span className={spanClass}>Status: </span>
           {person.status}
         </p>
+
         {person.photoUrl && (
-          <div className="relative h-[14rem]">
+          <div className="relative h-[20rem]">
             <Image
               layout="fill"
               objectFit="contain"
               src={`${sburl}/${person.photoUrl}`}
+              className="rounded-md"
             />
           </div>
         )}

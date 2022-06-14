@@ -16,7 +16,7 @@ import {
 import toast from "react-hot-toast";
 import { Person } from "types";
 
-const MissingSlug: NextPage<{ person: Person }> = ({ person }) => {
+const MissingSlug = ({ person }: Person) => {
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState(person.photoUrl);
@@ -30,10 +30,10 @@ const MissingSlug: NextPage<{ person: Person }> = ({ person }) => {
   //   lastSeen: person.lastSeen,
   // });
 
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [description, setDescription] = useState("");
-  const [lastSeen, setLastSeen] = useState("");
+  const [name, setName] = useState(person.name);
+  const [age, setAge] = useState(person.age);
+  const [description, setDescription] = useState(person.description);
+  const [lastSeen, setLastSeen] = useState(person.lastSeen);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
