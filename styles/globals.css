@@ -17,3 +17,11 @@ html {
 h1 {
   @apply text-2xl;
 }
+
+.radio-div {
+  @apply flex items-center space-x-2;
+}
+
+.code-container {
+  @apply max-w-xl mx-auto;
+}

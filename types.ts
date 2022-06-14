@@ -60,3 +60,15 @@ export interface Codes {
   name: string;
   desc: string;
 }
+
+export interface Code {
+  radio: {
+    id: string;
+    name: string;
+    desc: string;
+  };
+}
+
+export interface User {
+  email: string;
+}

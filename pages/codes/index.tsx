@@ -1,13 +1,14 @@
 import CodeNav from "@/components/CodeNav";
+import Radio from "@/components/Radio";
 import type { NextPage } from "next";
 import { Codes } from "types";
 
 const CodesIndex: NextPage<{ radios: Codes[] }> = ({ radios }) => {
   return (
-    <div>
+    <div className="code-container">
       <CodeNav />
       {radios.map((radio) => (
-        <h1>{JSON.stringify(radio)}</h1>
+        <Radio radio={radio} />
       ))}
     </div>
   );

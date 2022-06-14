@@ -1,10 +1,8 @@
 import { format } from "date-fns";
-import { Post, ArchivedPost } from "types";
+import { ArchivedPost } from "types";
 const ArchivedPost = ({
   post: { updatedTime, createdTime, message, fullPicture, permalinkUrl },
 }: ArchivedPost) => {
-  //   const postedAt = moment(post.createdTime).fromNow();
-
   return (
     <>
       <div className="card max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">

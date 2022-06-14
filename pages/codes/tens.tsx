@@ -1,14 +1,15 @@
 import CodeNav from "@/components/CodeNav";
+import Radio from "@/components/Radio";
 import { NextPage } from "next";
 import { Codes } from "types";
 
 const TensIndex: NextPage<{ tens: Codes[] }> = ({ tens }) => {
   return (
-    <div>
+    <div className="code-container">
       {" "}
       <CodeNav />{" "}
       {tens.map((ten) => (
-        <h1>{JSON.stringify(ten)}</h1>
+        <Radio radio={ten} />
       ))}
     </div>
   );

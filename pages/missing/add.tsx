@@ -10,13 +10,6 @@ const AddPerson: NextPage = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState("");
-  // const { inputs, handleChange } = useForm({
-  //   name: "",
-  //   age: "",
-  //   description: "",
-  //   lastSeen: "",
-  // });
-
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [description, setDescription] = useState("");
@@ -44,7 +37,6 @@ const AddPerson: NextPage = () => {
       }
     } catch (error) {
       alert(error);
-      console.log(error);
     }
   }
 

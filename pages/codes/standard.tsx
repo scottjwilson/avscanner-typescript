@@ -1,14 +1,16 @@
 import CodeNav from "@/components/CodeNav";
+import Radio from "@/components/Radio";
+
 import type { NextPage } from "next";
 import { Codes } from "types";
 
 const StandardIndex: NextPage<{ standards: Codes[] }> = ({ standards }) => {
   return (
-    <div>
+    <div className="code-container">
       <CodeNav />
 
       {standards.map((standard) => (
-        <h1>{JSON.stringify(standard)}</h1>
+        <Radio radio={standard} />
       ))}
     </div>
   );
