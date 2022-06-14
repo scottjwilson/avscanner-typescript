@@ -3,8 +3,6 @@ import { FbPost } from "types";
 export default function PostItem({
   post: { created_time, updated_time, message, full_picture, permalink_url },
 }: FbPost) {
-  //   const postedAt = moment(post.created_time).fromNow();
-
   return (
     <>
       <div className="card w-full max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">

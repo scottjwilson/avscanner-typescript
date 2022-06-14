@@ -3,6 +3,7 @@ import Footer from "./Footer";
 import { Toaster } from "react-hot-toast";
 import React from "react";
 import { Props } from "types";
+import MobNav from "./MobNav";
 
 const Page = ({ children }: Props) => {
   return (
@@ -25,6 +26,7 @@ const Page = ({ children }: Props) => {
       >
         <Header />
         <main className="min-h-screen">{children}</main>
+        <MobNav />
         <Footer />
       </div>
     </>
