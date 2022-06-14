@@ -21,6 +21,7 @@ const AddPerson: NextPage = () => {
   const [age, setAge] = useState("");
   const [description, setDescription] = useState("");
   const [lastSeen, setLastSeen] = useState("");
+  const [dateMissing, setDateMissing] = useState("");
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -33,6 +34,7 @@ const AddPerson: NextPage = () => {
           description: description,
           lastSeen: lastSeen,
           photoUrl: photoUrl,
+          dateMissing: dateMissing,
         },
       ]);
       if (data) {
@@ -96,6 +98,17 @@ const AddPerson: NextPage = () => {
           name="lastSeen"
           value={lastSeen}
           onChange={(e) => setLastSeen(e.target.value)}
+        />
+        <label htmlFor="date missing" className="label">
+          <span className="label-text">Approximate Date Missing</span>
+        </label>
+        <input
+          className={inputClass}
+          type="date"
+          placeholder="Last Seen"
+          name="dateMissing"
+          value={dateMissing}
+          onChange={(e) => setDateMissing(e.target.value)}
         />
         <PhotoUpload
           url={photoUrl}

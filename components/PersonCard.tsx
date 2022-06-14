@@ -7,11 +7,33 @@ const PersonCard = ({ person }: Person) => {
   const sburl =
     "https://vudbxrkcwwrwjoetsfzm.supabase.co/storage/v1/object/public/images/";
 
-  const spanClass = `font-light`;
+  const spanClass = `font-normal`;
+
+  function badgeStatus(x: string) {
+    if (x === "found") {
+      return "badge badge-success uppercase";
+    }
+    if (x === "missing") {
+      return "badge badge-warning uppercase";
+    }
+    if (x === "unknown") {
+      return "badge badge-success uppercase";
+    }
+  }
   return (
     <div className="card w-full bg-base-100 shadow-xl mb-8 outline rounded-md">
       <div className="card-body">
-        <p>{format(new Date(person.created_at), "MM/dd/yy  eee h:mm a")} </p>
+        <p>
+          Posted on: {format(new Date(person.created_at), "MM/dd/yy  h:mm a")}{" "}
+        </p>
+        <p>
+          Went missing around:{" "}
+          {format(new Date(person.dateMissing), "MM/dd/yy")}{" "}
+        </p>
+        <p>
+          <span className={spanClass}>Status: </span>
+          <span className={badgeStatus(person.status)}>{person.status}</span>
+        </p>
         <h1>
           {" "}
           <span className={spanClass}>Name: </span>
@@ -30,10 +52,6 @@ const PersonCard = ({ person }: Person) => {
           <span className={spanClass}>Last Seen: </span>
           {person.lastSeen}
         </h1>
-        <h1>
-          <span className={spanClass}>Status: </span>
-          {person.status}
-        </h1>
 
         {person.photoUrl && (
           <div className="relative h-[20rem]">
@@ -47,7 +65,7 @@ const PersonCard = ({ person }: Person) => {
         )}
         <div className="card-actions justify-end">
           <Link href={`/missing/${person.id}`}>
-            <a className="btn btn-primary">More Info</a>
+            <a className="btn btn-primary">Edit</a>
           </Link>
         </div>
       </div>

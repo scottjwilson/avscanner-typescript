@@ -15,5 +15,5 @@ html {
 }
 
 h1 {
-  @apply prose-2xl;
+  @apply text-2xl;
 }

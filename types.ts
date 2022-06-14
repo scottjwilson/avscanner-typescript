@@ -45,6 +45,7 @@ export interface Person {
     description: string;
     photoUrl: string;
     status: string;
+    dateMissing: string;
   };
 }
 

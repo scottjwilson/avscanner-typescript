@@ -47,7 +47,7 @@ const MissingIndex: NextPage = () => {
   return (
     <div className="max-w-xl mx-auto px-4">
       <Link href="/missing/add">
-        <a className="btn btn-outline">add new</a>
+        <a className="btn btn-outline mb-4">add new</a>
       </Link>
 
       <Persons />
