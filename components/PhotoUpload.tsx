@@ -61,7 +61,7 @@ export default function PhotoUpload({ url, size, onUpload }: Photo) {
   };
 
   return (
-    <div>
+    <div className="mt-8">
       {photoUrl ? (
         <img
           src={photoUrl}

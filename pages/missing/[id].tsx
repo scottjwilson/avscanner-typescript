@@ -17,23 +17,16 @@ import toast from "react-hot-toast";
 import { Person } from "types";
 
 const MissingSlug = ({ person }: Person) => {
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState(false);
   const [photoUrl, setPhotoUrl] = useState(person.photoUrl);
-
-  const router = useRouter();
-
-  // const { inputs, handleChange } = useForm({
-  //   name: person.name,
-  //   age: person.age,
-  //   description: person.description,
-  //   lastSeen: person.lastSeen,
-  // });
 
   const [name, setName] = useState(person.name);
   const [age, setAge] = useState(person.age);
   const [description, setDescription] = useState(person.description);
   const [lastSeen, setLastSeen] = useState(person.lastSeen);
+  const [status, setStatus] = useState(person.status);
 
   async function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -47,6 +40,7 @@ const MissingSlug = ({ person }: Person) => {
             age: age,
             description: description,
             lastSeen: lastSeen,
+            status: status,
             photoUrl: photoUrl,
           },
         ])
@@ -77,6 +71,12 @@ const MissingSlug = ({ person }: Person) => {
       alert(error);
     }
   }
+
+  function handleChange(e: FormEvent<HTMLSelectElement>) {
+    const target = e.target as HTMLSelectElement;
+    setStatus(target.value);
+  }
+
   return (
     <>
       {/* <pre>{JSON.stringify(person, null, 2)}</pre> */}
@@ -128,6 +128,16 @@ const MissingSlug = ({ person }: Person) => {
             value={lastSeen}
             onChange={(e) => setLastSeen(e.target.value)}
           />
+
+          <label htmlFor="status" className="label">
+            <span className="label-text">Status</span>
+          </label>
+
+          <select onChange={handleChange} value={status}>
+            <option value="missing">missing</option>
+            <option value="found">found</option>
+            <option value="unknown">unknown</option>
+          </select>
 
           <PhotoUpload
             url={photoUrl}

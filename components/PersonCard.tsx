@@ -7,33 +7,33 @@ const PersonCard = ({ person }: Person) => {
   const sburl =
     "https://vudbxrkcwwrwjoetsfzm.supabase.co/storage/v1/object/public/images/";
 
-  const spanClass = `font-black`;
+  const spanClass = `font-light`;
   return (
     <div className="card w-full bg-base-100 shadow-xl mb-8 outline rounded-md">
       <div className="card-body">
         <p>{format(new Date(person.created_at), "MM/dd/yy  eee h:mm a")} </p>
-        <h1 className="card-title">
+        <h1>
           {" "}
           <span className={spanClass}>Name: </span>
           {person.name}
         </h1>
-        <p>
+        <h1>
           {" "}
           <span className={spanClass}>Age: </span>
           {person.age}
-        </p>
-        <p>
+        </h1>
+        <h1>
           <span className={spanClass}>Description: </span>
           {person.description}
-        </p>
-        <p>
+        </h1>
+        <h1>
           <span className={spanClass}>Last Seen: </span>
           {person.lastSeen}
-        </p>
-        <p>
+        </h1>
+        <h1>
           <span className={spanClass}>Status: </span>
           {person.status}
-        </p>
+        </h1>
 
         {person.photoUrl && (
           <div className="relative h-[20rem]">
