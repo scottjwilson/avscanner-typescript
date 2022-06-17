@@ -1,5 +1,6 @@
 import PostItem from "@/components/PostItem";
 import type { NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { useQuery } from "react-query";
 import { Post } from "types";
 
@@ -26,7 +27,10 @@ const Home: NextPage = () => {
     if (status === "success") {
       return (
         <>
-          {" "}
+          <NextSeo
+            title={`${process.env.SITE_TITLE} - Home`}
+            description="Community safety through citizen awareness"
+          />
           <div className="flex flex-col items-center">
             {data.data.map((post: Post) => (
               <PostItem key={post.id} post={post} />

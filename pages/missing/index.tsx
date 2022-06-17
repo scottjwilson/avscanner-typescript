@@ -2,7 +2,7 @@ import PersonCard from "@/components/PersonCard";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useQuery } from "react-query";
 
 const MissingIndex: NextPage = () => {

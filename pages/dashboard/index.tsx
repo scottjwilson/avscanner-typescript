@@ -1,7 +1,7 @@
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { ChangeEvent, MouseEvent } from "react";
+import { MouseEvent } from "react";
 
 const Dashboard: NextPage = () => {
   const router = useRouter();
@@ -16,9 +16,11 @@ const Dashboard: NextPage = () => {
     }
   };
   return (
-    <div>
-      <h1>Welcomne</h1>
-      <button onClick={handleLogout}>Sign Out</button>
+    <div className="code-container">
+      <h1>Welcome</h1>
+      <button onClick={handleLogout} className="btn">
+        Sign Out
+      </button>
     </div>
   );
 };

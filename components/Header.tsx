@@ -31,7 +31,7 @@ function Logo() {
 }
 
 function Navbar() {
-  const classes = `hidden md:flex space-x-4`;
+  const classes = `hidden md:flex justify-evenly`;
   const router = useRouter();
   return (
     <div className={classes}>

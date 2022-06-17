@@ -5,14 +5,9 @@ import {
   supabaseServerClient,
 } from "@supabase/supabase-auth-helpers/nextjs";
 import { GetServerSideProps, NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
-import {
-  ChangeEvent,
-  FormEvent,
-  MouseEventHandler,
-  SetStateAction,
-  useState,
-} from "react";
+import { FormEvent, SetStateAction, useState } from "react";
 import toast from "react-hot-toast";
 import { Person } from "types";
 
@@ -79,8 +74,10 @@ const MissingSlug = ({ person }: Person) => {
 
   return (
     <>
-      {/* <pre>{JSON.stringify(person, null, 2)}</pre> */}
-
+      <NextSeo
+        title="AVSN Missing Persons"
+        description="AV Scanner News Missing Persons in the Antelope Valley. Palmdale, Lancaster, Quartz Hill"
+      />
       <div className="max-w-md mx-auto  rounded-md p-8 bg-base-300">
         <h1 className="text-center text-xl">Edit missing person</h1>
         <form className="form-control" onSubmit={onSubmit}>

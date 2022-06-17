@@ -1,5 +1,5 @@
 import PhotoUpload from "@/components/PhotoUpload";
-import useForm from "@/lib/useForm";
+
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
 import { useRouter } from "next/router";
