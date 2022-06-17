@@ -61,7 +61,7 @@ export default function PhotoUpload({ url, size, onUpload }: Photo) {
   };
 
   return (
-    <div className="mt-8">
+    <div>
       {photoUrl ? (
         <img
           src={photoUrl}
@@ -77,7 +77,7 @@ export default function PhotoUpload({ url, size, onUpload }: Photo) {
       )}
       <div style={{ width: size }}>
         <label
-          className="border flex justify-center items-center py-2   rounded-md hover:bg-base-100 transition ease-in-out cursor-pointer"
+          className="border flex justify-center items-center py-2 mt-4 rounded-md hover:bg-base-100 transition ease-in-out cursor-pointer"
           htmlFor="single"
         >
           {uploading ? "Uploading ..." : "Upload"}

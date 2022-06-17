@@ -26,25 +26,25 @@ const Home: NextPage = () => {
 
     if (status === "success") {
       return (
-        <>
-          <NextSeo
-            title={`${process.env.SITE_TITLE} - Home`}
-            description="Community safety through citizen awareness"
-          />
-          <div className="flex flex-col items-center">
-            {data.data.map((post: Post) => (
-              <PostItem key={post.id} post={post} />
-            ))}
-          </div>
-        </>
+        <div className="flex flex-col items-center">
+          {data.data.map((post: Post) => (
+            <PostItem key={post.id} post={post} />
+          ))}
+        </div>
       );
     }
   }
 
   return (
-    <div className="max-w-xl mx-auto px-4">
-      <Posts />
-    </div>
+    <>
+      <NextSeo
+        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} - Home`}
+        description="Community safety through citizen awareness"
+      />
+      <div className="max-w-xl mx-auto px-4">
+        <Posts />
+      </div>
+    </>
   );
 };
 

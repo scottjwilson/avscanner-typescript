@@ -2,7 +2,11 @@ import React from "react";
 import ThemeChanger from "./ThemeChanger";
 
 function Footer() {
-  return <div>Footer</div>;
+  return (
+    <footer className="py-24">
+      <ThemeChanger />
+    </footer>
+  );
 }
 
 export default Footer;

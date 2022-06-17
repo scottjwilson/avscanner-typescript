@@ -20,9 +20,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <UserProvider supabaseClient={supabaseClient}>
-        <Page>
-          <Component {...pageProps} />
-        </Page>
+        <ThemeProvider>
+          <Page>
+            <Component {...pageProps} />
+          </Page>
+        </ThemeProvider>
       </UserProvider>
     </QueryClientProvider>
   );

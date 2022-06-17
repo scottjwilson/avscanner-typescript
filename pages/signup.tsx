@@ -52,7 +52,10 @@ export default function SignInPage() {
 
   return (
     <>
-      <NextSeo title="Sign Up" description="AVSN Sign Up" />
+      <NextSeo
+        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Sign Up`}
+        description="AV Scanner News Sign Up"
+      />
       <div className="max-w-md mx-auto">
         <div className="mx-4  p-4 rounded-xl bg-base-300 shadow-xl">
           <h1 className="text-center mt-2">Create an Account</h1>

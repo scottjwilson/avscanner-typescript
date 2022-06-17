@@ -1,6 +1,7 @@
 import ArchivedPost from "@/components/ArchivedPost";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { useQuery } from "react-query";
 
 // const Home: NextPage<{ posts: Post[] }> = ({ posts }) => {
@@ -40,6 +41,10 @@ const Home: NextPage = () => {
 
   return (
     <>
+      <NextSeo
+        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Archived Posts`}
+        description="AV Scanner News"
+      />
       <Posts />
     </>
   );

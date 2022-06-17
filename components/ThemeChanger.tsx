@@ -1,18 +1,24 @@
 import { useTheme } from "next-themes";
+import { FaMoon, FaSun } from "react-icons/fa";
+
 const ThemeChanger = () => {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div>
-      The current theme is: {theme}
-      <button className="btn" onClick={() => setTheme("light")}>
-        Light Mode
-      </button>
-      <button className="btn" onClick={() => setTheme("dark")}>
-        Dark Mode
-      </button>
-      sa
-    </div>
+    <>
+      <label className="swap swap-rotate">
+        <input type="checkbox" />
+        {theme === "light" ? (
+          <button className="btn btn-ghost" onClick={() => setTheme("dark")}>
+            <FaMoon />
+          </button>
+        ) : (
+          <button className="btn btn-ghost" onClick={() => setTheme("light")}>
+            <FaSun />
+          </button>
+        )}
+      </label>
+    </>
   );
 };
 

@@ -1,16 +1,23 @@
 import CodeNav from "@/components/CodeNav";
 import Radio from "@/components/Radio";
 import type { NextPage } from "next";
+import { NextSeo } from "next-seo";
 import { Codes } from "types";
 
 const CodesIndex: NextPage<{ radios: Codes[] }> = ({ radios }) => {
   return (
-    <div className="code-container">
-      <CodeNav />
-      {radios.map((radio) => (
-        <Radio radio={radio} />
-      ))}
-    </div>
+    <>
+      <NextSeo
+        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Radio Codes`}
+        description="AV Scanner News Radio Codes. What do the codes mean?"
+      />
+      <div className="code-container">
+        <CodeNav />
+        {radios.map((radio) => (
+          <Radio radio={radio} />
+        ))}
+      </div>
+    </>
   );
 };
 

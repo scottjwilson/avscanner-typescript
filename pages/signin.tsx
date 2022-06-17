@@ -42,7 +42,10 @@ export default function SignInPage() {
 
   return (
     <>
-      <NextSeo title="Sign In" description="AVSN Sign In" />
+      <NextSeo
+        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Sign In`}
+        description="AV Scanner News Sign In"
+      />
       <div className="max-w-md mx-auto">
         <div className="mx-4  p-4 rounded-xl bg-base-300 shadow-xl">
           <h1 className="text-center mt-2">Sign In</h1>

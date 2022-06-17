@@ -1,6 +1,7 @@
 import PersonCard from "@/components/PersonCard";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
+import { NextSeo } from "next-seo";
 import Link from "next/link";
 import { useState } from "react";
 import { useQuery } from "react-query";
@@ -45,13 +46,19 @@ const MissingIndex: NextPage = () => {
   }
 
   return (
-    <div className="max-w-xl mx-auto px-4">
-      <Link href="/missing/add">
-        <a className="btn btn-outline mb-4">add new</a>
-      </Link>
+    <>
+      <NextSeo
+        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Missing Persons`}
+        description="AV Scanner News Missing Persons"
+      />
+      <div className="max-w-xl mx-auto px-4">
+        <Link href="/missing/add">
+          <a className="btn btn-outline mb-4">add new</a>
+        </Link>
 
-      <Persons />
-    </div>
+        <Persons />
+      </div>
+    </>
   );
 };
 

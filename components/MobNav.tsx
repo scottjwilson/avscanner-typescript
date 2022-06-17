@@ -12,8 +12,8 @@ import {
 export default function MobNav() {
   const router = useRouter();
   const navClasses = `fixed bottom-0 inset-x-0 flex md:hidden justify-between max-w-2xl mx-auto rounded-3xl z-50 bg-base-200`;
-  const linkClasses = `w-full h-full p-4 text-center flex flex-col items-center capitalize border-t-4`;
-  const activeClasses = `w-full h-full p-4 text-center flex flex-col items-center capitalize border-t-4 border-black`;
+  const linkClasses = `w-full h-full p-4 text-center flex flex-col items-center capitalize border-t-4 border-transparent`;
+  const activeClasses = `w-full h-full p-4 text-center flex flex-col items-center capitalize border-t-4 border-primary`;
   return (
     <nav className={navClasses}>
       <Link href="/">

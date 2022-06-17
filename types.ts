@@ -68,7 +68,3 @@ export interface Code {
     desc: string;
   };
 }
-
-export interface User {
-  email: string;
-}
