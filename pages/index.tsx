@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
 import { useQuery } from "react-query";
 import { Post } from "types";
-
+import Loading from "@/components/Loading";
 const Home: NextPage = () => {
   async function fetchPosts() {
     const res = await fetch("/api/posts");
@@ -18,7 +18,7 @@ const Home: NextPage = () => {
     });
 
     if (status === "loading") {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
     if (status === "error") {
       return <p>Error...</p>;

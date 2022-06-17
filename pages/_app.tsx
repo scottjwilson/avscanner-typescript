@@ -9,7 +9,8 @@ import { ThemeProvider } from "next-themes";
 import Router from "next/router";
 import NProgress from "nprogress";
 import { useTheme } from "next-themes";
-
+import { ApolloProvider } from "@apollo/client";
+import client from "@/lib/apolloClient";
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
@@ -19,13 +20,15 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <UserProvider supabaseClient={supabaseClient}>
-        <ThemeProvider>
-          <Page>
-            <Component {...pageProps} />
-          </Page>
-        </ThemeProvider>
-      </UserProvider>
+      <ApolloProvider client={client}>
+        <UserProvider supabaseClient={supabaseClient}>
+          <ThemeProvider>
+            <Page>
+              <Component {...pageProps} />
+            </Page>
+          </ThemeProvider>
+        </UserProvider>
+      </ApolloProvider>
     </QueryClientProvider>
   );
 }

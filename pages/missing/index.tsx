@@ -1,3 +1,4 @@
+import Loading from "@/components/Loading";
 import PersonCard from "@/components/PersonCard";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
@@ -19,7 +20,7 @@ const MissingIndex: NextPage = () => {
       // cacheTime: 10,
     });
     if (status === "loading") {
-      return <p>Loading...</p>;
+      return <Loading />;
     }
     if (status === "error") {
       return <p>Error...</p>;

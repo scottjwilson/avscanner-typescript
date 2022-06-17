@@ -9,10 +9,10 @@ rounded-lg border shadow border-gray-200 p-4
   return (
     <>
       <NextSeo
-        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Contact`}
-        description="AV Scanner News Contact"
+        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Donate`}
+        description="AV Scanner News How to help. We are a non profit organization"
       />
-      <div className="max-w-4xl mx-auto px-2">
+      <div className="max-w-4xl mx-auto">
         <div className="my-8">
           <h1 className="text-center ">
             We are not law enforcement,{" "}

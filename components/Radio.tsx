@@ -2,8 +2,8 @@ import { Code } from "types";
 
 export default function Radio({ radio }: Code) {
   return (
-    <div className="radio-div">
-      <h1>{radio.name}</h1>
+    <div className="radio-div text-sm">
+      <p className="font-bold">{radio.name}</p>
       <p>{radio.desc}</p>
     </div>
   );

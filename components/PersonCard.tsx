@@ -27,7 +27,7 @@ const PersonCard = ({ person }: Person) => {
           Posted on: {format(new Date(person.created_at), "MM/dd/yy  h:mm a")}{" "}
         </p>
         <p>
-          Went missing around:{" "}
+          Went missing around:{person.dateMissing}
           {format(new Date(person.dateMissing), "MM/dd/yy")}{" "}
         </p>
         <p>
