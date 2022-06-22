@@ -1,5 +1,5 @@
 import PhotoUpload from "@/components/PhotoUpload";
-
+import MedSectionWithTitle from "@/components/MedSectionWithTitle";
 import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
@@ -49,9 +49,8 @@ const AddPerson: NextPage = () => {
         title={`${process.env.NEXT_PUBLIC_SITE_TITLE}`}
         description="AV Scanner News"
       />
-      <div className="max-w-md mx-auto bg-base-300 p-4 rounded-md">
-        <h1 className="text-center text-xl">Add new missing person</h1>
 
+      <MedSectionWithTitle title="Add new missing person">
         <form className="form-control" onSubmit={onSubmit}>
           <label htmlFor="name" className="label">
             <span className="label-text">Name</span>
@@ -130,7 +129,7 @@ const AddPerson: NextPage = () => {
           </div>
         </form>
         {JSON.stringify(dateMissing)}
-      </div>
+      </MedSectionWithTitle>
     </>
   );
 };

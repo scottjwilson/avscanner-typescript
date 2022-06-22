@@ -1,3 +1,4 @@
+import MedSectionWithTitle from "@/components/MedSectionWithTitle";
 import PhotoUpload from "@/components/PhotoUpload";
 import useForm from "@/lib/useForm";
 import {
@@ -81,9 +82,9 @@ const MissingSlug = ({ person }: Person) => {
         title="AVSN Missing Persons"
         description="AV Scanner News Missing Persons in the Antelope Valley. Palmdale, Lancaster, Quartz Hill"
       />
-      <div className="max-w-md mx-auto  rounded-md p-8 bg-base-300">
-        <h1 className="text-center text-xl">Edit missing person</h1>
-        <form className="form-control" onSubmit={onSubmit}>
+
+      <MedSectionWithTitle title="Edit missing person">
+        <form className="form-control " onSubmit={onSubmit}>
           <label htmlFor="name" className="label">
             <span className="label-text">Name</span>
           </label>
@@ -157,7 +158,7 @@ const MissingSlug = ({ person }: Person) => {
           </select>
 
           <label htmlFor="name" className="label">
-            <span className="label-text">Image</span>
+            <span className="label-text">Name</span>
           </label>
           <PhotoUpload
             url={photoUrl}
@@ -193,7 +194,7 @@ const MissingSlug = ({ person }: Person) => {
             Delete
           </button>
         </div>
-      </div>
+      </MedSectionWithTitle>
     </>
   );
 };

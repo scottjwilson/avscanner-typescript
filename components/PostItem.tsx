@@ -4,7 +4,7 @@ export default function PostItem({
   post: { created_time, updated_time, message, full_picture, permalink_url },
 }: FbPost) {
   return (
-    <div className="card w-full max-w-lg bg-base-100 shadow-xl mb-8 outline rounded-md">
+    <div className="content">
       <div className="card-body">
         {created_time == updated_time ? (
           <h1 className="px-2 font-bold capitalize">

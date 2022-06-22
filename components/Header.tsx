@@ -3,13 +3,16 @@ import Link from "next/link";
 
 import { useUser } from "@supabase/supabase-auth-helpers/react";
 import { useRouter } from "next/router";
+import ThemeChanger from "./ThemeChanger";
+import Logo from "./Logo";
 
 export default function Header() {
   const { user, isLoading } = useUser();
 
   return (
-    <div className=" w-full p-2 flex justify-center md:justify-between items-center mb-4">
+    <div className="w-full p-2 flex justify-center md:justify-between items-center mb-4 fixed inset-x-0 z-10 bg-base-100 border-b shadow-md">
       <Logo />
+      <ThemeChanger />
       <div className="flex items-center space-x-4">
         <Navbar />
         <UserDiv user={user} />
@@ -18,20 +21,8 @@ export default function Header() {
   );
 }
 
-function Logo() {
-  const classes =
-    "font-brand uppercase italic font-extrabold md:text-3xl text-2xl text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-900 px-6";
-  return (
-    <div>
-      <Link href="/">
-        <a className={classes}>avscannernews</a>
-      </Link>
-    </div>
-  );
-}
-
 function Navbar() {
-  const classes = `hidden md:flex justify-evenly`;
+  const classes = `hidden md:flex justify-evenly `;
   const router = useRouter();
   return (
     <div className={classes}>

@@ -25,7 +25,7 @@ const Page = ({ children }: Props) => {
         className="bg-base-100"
       >
         <Header />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen pt-20">{children}</main>
         <MobNav />
         <Footer />
       </div>

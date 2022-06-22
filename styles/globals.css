@@ -20,9 +20,13 @@ h1 {
 }
 
 .radio-div {
-  @apply flex items-center justify-between border p-2 m-2 border-opacity-10;
+  @apply flex items-center justify-between p-2 m-2   border-b rounded-sm;
 }
 
 .code-container {
   @apply max-w-md mx-auto px-2;
+}
+
+.content {
+  @apply card w-full max-w-lg bg-base-100 shadow-xl mb-8 border rounded-md;
 }

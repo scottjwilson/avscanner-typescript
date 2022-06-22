@@ -13,7 +13,7 @@ rounded-lg border shadow border-gray-200 p-4
         description="AV Scanner News Contact"
       />
       <div className="max-w-4xl mx-auto px-2">
-        <div className="my-8">
+        <div className="mb-4">
           <h1 className="text-center ">
             We are not law enforcement,{" "}
             <em>

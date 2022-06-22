@@ -9,7 +9,10 @@ const ThemeChanger = () => {
       <label className="swap swap-rotate">
         <input type="checkbox" />
         {theme === "light" ? (
-          <button className="btn btn-ghost" onClick={() => setTheme("dark")}>
+          <button
+            className="btn btn-ghost"
+            onClick={() => setTheme("business")}
+          >
             <FaMoon />
           </button>
         ) : (
