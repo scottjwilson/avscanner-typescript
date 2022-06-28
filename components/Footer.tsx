@@ -62,7 +62,7 @@ function Footer() {
         <div className="grid grid-cols-2 gap-6">
           {contactData.map((contact) => (
             <a href="tel:{contact.linkedPhone}">
-              <h1 className="font-bold ">{contact.name}</h1>
+              <h2 className="font-bold ">{contact.name}</h2>
               <p className=" ">{contact.phone}</p>
             </a>
           ))}

@@ -64,11 +64,6 @@ const PersonCard = ({ person }: Person) => {
             />
           </figure>
         )}
-        <div className="card-actions justify-end">
-          <Link href={`/missing/${person.id}`}>
-            <a className="btn btn-primary">Edit</a>
-          </Link>
-        </div>
       </div>
     </article>
   );

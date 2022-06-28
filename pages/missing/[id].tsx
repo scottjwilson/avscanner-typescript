@@ -5,7 +5,7 @@ import {
   supabaseClient,
   supabaseServerClient,
 } from "@supabase/supabase-auth-helpers/nextjs";
-import { GetServerSideProps, NextPage } from "next";
+import { GetServerSideProps } from "next";
 import { NextSeo } from "next-seo";
 import { useRouter } from "next/router";
 import { FormEvent, SetStateAction, useState } from "react";

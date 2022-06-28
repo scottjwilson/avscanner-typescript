@@ -52,13 +52,10 @@ const MissingIndex: NextPage = () => {
         title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Missing Persons`}
         description="AV Scanner News Missing Persons"
       />
-      <div className="max-w-xl mx-auto px-4">
-        <Link href="/missing/add">
-          <a className="btn btn-outline mb-4">add new</a>
-        </Link>
-
+      <section className="max-w-xl mx-auto px-4">
+        <h1 className="text-center mb-4">Missing Persons</h1>
         <Persons />
-      </div>
+      </section>
     </>
   );
 };

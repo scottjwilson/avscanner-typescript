@@ -12,7 +12,6 @@ export default function Header() {
   return (
     <div className="w-full p-2 flex justify-center md:justify-between items-center mb-4 fixed inset-x-0 z-10 bg-base-100 border-b shadow-md">
       <Logo />
-      <ThemeChanger />
       <div className="flex items-center space-x-4">
         <Navbar />
         {/* <UserDiv user={user} /> */}
@@ -26,6 +25,8 @@ function Navbar() {
   const router = useRouter();
   return (
     <div className={classes}>
+      <ThemeChanger />
+
       {linkData.map((link) => (
         <Link key={link.id} href={link.href}>
           <a
