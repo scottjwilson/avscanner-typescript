@@ -211,7 +211,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   if (error) {
     console.log(error.message);
   }
-
+  console.log(person);
   return {
     props: {
       person: person,
