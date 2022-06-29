@@ -18,7 +18,7 @@ const Home: NextPage = () => {
         {postsQuery.isLoading ? (
           <Loading />
         ) : postsQuery.isError ? (
-          postsQuery.error.message
+          <span>Something went wrong</span>
         ) : (
           <div className="flex flex-col items-center">
             got sum
