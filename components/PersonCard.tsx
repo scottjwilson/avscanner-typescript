@@ -54,22 +54,22 @@ const PersonCard = ({ person }: Person) => {
           <span className={badgeStatus(person.status)}>{person.status}</span>
         </p>
 
-        {person.photoUrl && (
-          <figure className="relative h-[20rem]">
-            <Image
-              layout="fill"
-              objectFit="contain"
-              src={`${sburl}/${person.photoUrl}`}
-              className="rounded-md"
-            />
-          </figure>
-        )}
         {/* <div className="card-actions justify-center">
           <Link href={`/missing/${person.id}`}>
             <a className="btn btn-primary btn-outline">More Information</a>
           </Link>
         </div> */}
       </div>
+      {person.photoUrl && (
+        <figure className="relative h-[40rem]">
+          <Image
+            layout="fill"
+            objectFit="contain"
+            src={`${sburl}/${person.photoUrl}`}
+            className="rounded-md"
+          />
+        </figure>
+      )}
     </article>
   );
 };
