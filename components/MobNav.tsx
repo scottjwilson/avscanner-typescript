@@ -50,7 +50,7 @@ export default function MobNav() {
           Contact
         </a>
       </Link>
-      <Link href="/archive">
+      {/* <Link href="/archive">
         <a
           className={
             router.pathname === "/archive" ? activeClasses : linkClasses
@@ -59,7 +59,7 @@ export default function MobNav() {
           <FaRegNewspaper />
           Archive
         </a>
-      </Link>
+      </Link> */}
     </nav>
   );
 }

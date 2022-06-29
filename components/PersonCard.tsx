@@ -24,17 +24,6 @@ const PersonCard = ({ person }: Person) => {
   return (
     <article className="content">
       <div className="card-body">
-        <p>
-          Posted on: {format(new Date(person.created_at), "MM/dd/yy  h:mm a")}{" "}
-        </p>
-        <p>
-          Went missing around:{" "}
-          {format(new Date(person.dateMissing), "MM/dd/yy")}{" "}
-        </p>
-        <p>
-          <span className={spanClass}>Status: </span>
-          <span className={badgeStatus(person.status)}>{person.status}</span>
-        </p>
         <h1>
           {" "}
           <span className={spanClass}>Name: </span>
@@ -53,6 +42,17 @@ const PersonCard = ({ person }: Person) => {
           <span className={spanClass}>Last Seen: </span>
           {person.lastSeen}
         </p>
+        <p>
+          Posted on: {format(new Date(person.created_at), "MM/dd/yy  h:mm a")}{" "}
+        </p>
+        <p>
+          Went missing around:{" "}
+          {format(new Date(person.dateMissing), "MM/dd/yy")}{" "}
+        </p>
+        <p>
+          <span className={spanClass}>Status: </span>
+          <span className={badgeStatus(person.status)}>{person.status}</span>
+        </p>
 
         {person.photoUrl && (
           <figure className="relative h-[20rem]">
@@ -64,6 +64,11 @@ const PersonCard = ({ person }: Person) => {
             />
           </figure>
         )}
+        {/* <div className="card-actions justify-center">
+          <Link href={`/missing/${person.id}`}>
+            <a className="btn btn-primary btn-outline">More Information</a>
+          </Link>
+        </div> */}
       </div>
     </article>
   );

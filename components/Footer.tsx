@@ -7,6 +7,7 @@ import {
   FaRegEnvelope,
 } from "react-icons/fa";
 import Logo from "./Logo";
+import ThemeChanger from "./ThemeChanger";
 const classes = `pr-4 py-2 leading-5 font-medium`;
 const icons = `text-2xl`;
 
@@ -75,6 +76,7 @@ function Footer() {
             <p className="text-sm   mb-2 md:text-lg">
               {new Date().getFullYear()} AV Scanner News
             </p>
+            <ThemeChanger />
           </div>
         </div>
       </div>
