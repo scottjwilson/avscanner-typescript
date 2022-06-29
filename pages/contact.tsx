@@ -23,7 +23,7 @@ rounded-lg border shadow border-gray-200 p-4
         </div>
         <div className="grid grid-cols-2 md:gap-4 gap-3">
           {contactData.map((contact) => (
-            <a href="tel:{contact.linkedPhone}" className={contactCard}>
+            <a href={`tel:${contact.linkedPhone}`} className={contactCard}>
               <h2 className="font-bold ">{contact.name}</h2>
               <p className="">{contact.phone}</p>
             </a>
