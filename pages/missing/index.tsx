@@ -19,7 +19,7 @@ const MissingIndex: NextPage = () => {
         {personsQuery.isLoading ? (
           <Loading />
         ) : personsQuery.isError ? (
-          <span>Something went wrong{personsQuery.error.message}</span>
+          <span>Something went wrong</span>
         ) : (
           <div className="flex flex-col items-center w-full ">
             {personsQuery.data.map((person, i) => {
