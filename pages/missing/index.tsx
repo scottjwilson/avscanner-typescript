@@ -1,13 +1,28 @@
 import Loading from "@/components/Loading";
 import PersonCard from "@/components/PersonCard";
-import usePersons from "hooks/usePersons";
+import { supabaseClient } from "@supabase/supabase-auth-helpers/nextjs";
+
 import type { NextPage } from "next";
 import { NextSeo } from "next-seo";
+import { useQuery } from "react-query";
 
 const MissingIndex: NextPage = () => {
-  const personsQuery = usePersons();
+  // const personsQuery = usePersons();
   const title = `${process.env.NEXT_PUBLIC_SITE_TITLE} -  Missing Persons`;
   const description = "AV Scanner News Missing Persons";
+
+  const getPersons = async () => {
+    const { data, error } = await supabaseClient
+      .from("missing_persons")
+      .select("*");
+    if (error) {
+      throw new Error(error.message);
+    }
+    return data;
+  };
+
+  const personsQuery = useQuery("persons", () => getPersons());
+
   return (
     <>
       <NextSeo title={title} description={description} />

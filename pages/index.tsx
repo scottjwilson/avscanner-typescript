@@ -14,6 +14,8 @@ const Home: NextPage = () => {
         title={`${process.env.NEXT_PUBLIC_SITE_TITLE} - Home`}
         description="Community safety through citizen awareness"
       />
+
+      {/* <pre>{JSON.stringify(postsQuery, null, 2)}</pre> */}
       <section className="max-w-xl mx-auto px-4">
         {postsQuery.isLoading ? (
           <Loading />
@@ -21,7 +23,6 @@ const Home: NextPage = () => {
           <span>Something went wrong</span>
         ) : (
           <div className="flex flex-col items-center">
-            got sum
             {postsQuery.data.data.map((post: Post) => (
               <PostItem key={post.id} post={post} />
             ))}
