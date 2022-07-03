@@ -8,7 +8,6 @@ import Loading from "@/components/Loading";
 const title = `${process.env.NEXT_PUBLIC_SITE_TITLE} - Home`;
 const description = "Community safety through citizen awareness";
 const url = `${process.env.NEXT_PUBLIC_CLIENT_URL}`;
-const imageUrl = `${process.env.NEXT_PUBLIC_CLIENT_URL}/og.jpg`;
 const alt = `${process.env.NEXT_PUBLIC_SITE_TITLE} - Home`;
 
 const Home: NextPage = () => {

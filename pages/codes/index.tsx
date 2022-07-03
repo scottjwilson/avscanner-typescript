@@ -7,14 +7,32 @@ import { NextSeo } from "next-seo";
 import { Codes } from "types";
 import gql from "graphql-tag";
 
+const title = `${process.env.NEXT_PUBLIC_SITE_TITLE} -  Radio Codes`;
+const description = "AV Scanner News Radio Codes, What do the codes mean?";
+const url = `${process.env.NEXT_PUBLIC_CLIENT_URL}/codes`;
+const alt = `${process.env.NEXT_PUBLIC_SITE_TITLE} - Radio Codes`;
+
 const CodesIndex: NextPage<{ radios: Codes[] }> = ({ radios }) => {
   return (
     <>
       <NextSeo
-        title={`${process.env.NEXT_PUBLIC_SITE_TITLE} -  Radio Codes`}
-        description="AV Scanner News Radio Codes. What do the codes mean?"
+        title={title}
+        description={description}
+        openGraph={{
+          url: url,
+          title: title,
+          description: description,
+          images: [
+            {
+              url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/og.jpg`,
+              width: 800,
+              height: 600,
+              alt: alt,
+              type: "image/jpeg",
+            },
+          ],
+        }}
       />
-
       <div className="code-container">
         <CodeNav />
         {radios.map((radio) => (
