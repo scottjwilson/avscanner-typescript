@@ -25,7 +25,7 @@ const Home: NextPage = () => {
           description: description,
           images: [
             {
-              url: imageUrl,
+              url: `${process.env.NEXT_PUBLIC_CLIENT_URL}/og.jpg`,
               width: 800,
               height: 600,
               alt: alt,
