@@ -17,7 +17,7 @@ class MyDocument extends Document {
 
   render(): ReactElement {
     return (
-      <Html lang="en" data-theme="system">
+      <Html lang="en">
         <Head>
           <link rel="preconnect" href="https://fonts.gstatic.com" />
           <link
@@ -32,7 +32,7 @@ class MyDocument extends Document {
             content="black-translucent"
           />
 
-          <meta name="theme-color" content="#eeeae6" />
+          {/* <meta name="theme-color" content="#eeeae6" /> */}
           <link
             rel="icon"
             type="image/png"
