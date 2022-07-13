@@ -22,16 +22,7 @@ export default function MobNav() {
           News
         </a>
       </Link>
-      <Link href="/missing">
-        <a
-          className={
-            router.pathname === "/missing" ? activeClasses : linkClasses
-          }
-        >
-          <FaRegEye />
-          Missing
-        </a>
-      </Link>
+
       <Link href="/codes">
         <a
           className={router.pathname === "/codes" ? activeClasses : linkClasses}
